@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="DonutBet - SMP Minecraft Casino">
+    <title>DonutBet - SMP Minecraft Casino</title>
+    <style>body{opacity:0}body.loaded{opacity:1;transition:opacity .15s ease-in}.wallet-popup,.set-minecraft-popup:not(.set-minecraft-required){display:none!important}.wallet-popup.open,.set-minecraft-popup.set-minecraft-required,.set-minecraft-popup[style*="display: flex"]{display:flex!important}</style>
+    <link rel="icon" href="img/logo.png">
+    <link href="css/main.a93f6e6f.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mobile.css" rel="stylesheet">
+    
+    <script src="js/money.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/chat.js" defer></script>
+</head>
+<body>
+<script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('loaded')})</script>
+<div class="app">
+    <header class="header">
+        <div class="header-left">
+            <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <a href="/" class="logo">
+                <img src="img/logo.png" alt="DonutBet Logo" class="logo-icon">
+                <h1>DONUTBET</h1>
+            </a>
+        </div>
+        
+        <div class="header-center">
+            <div class="wallet-container">
+                <div class="wallet-balance"><span class="currency-symbol">$</span><span id="header-balance" data-money="0.0"></span></div>
+                <button type="button" class="wallet-btn" id="wallet-btn">Wallet</button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+        
+                <a href="/account" class="user-profile" title="Account">
+                    <div class="avatar">
+                        
+                        <img src="https://mc-heads.net/avatar/cpufreq/32" alt="Profile" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                        
+                    </div>
+                    <span class="username">cpufreq</span>
+                </a>
+                <a href="/logout" class="header-logout" title="Log out">Log out</a>
+            
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <div class="section-title">Casino</div>
+                    <a href="/" class="nav-item active">
+                        <span class="nav-icon"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg></span>
+                        <span class="nav-label">Home</span>
+                    </a>
+                    <a href="https://donut.market" target="_blank" rel="noopener noreferrer" class="nav-item store-highlight">
+                        <span class="nav-icon"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"></path></svg></span>
+                        <span class="nav-label">Store</span>
+                    </a>
+                    <a href="/mines" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M440.5 88.5l-52 52L415 167c9.4 9.4 9.4 24.6 0 33.9l-17.4 17.4c11.8 26.1 18.4 55.1 18.4 85.6 0 114.9-93.1 208-208 208S0 418.9 0 304 93.1 96 208 96c30.5 0 59.5 6.6 85.6 18.4L311 97c9.4-9.4 24.6-9.4 33.9 0l26.5 26.5 52-52 17.1 17zM500 60h-24c-6.6 0-12 5.4-12 12s5.4 12 12 12h24c6.6 0 12-5.4 12-12s-5.4-12-12-12z"/></svg></span>
+                        <span class="nav-label">Mines</span>
+                    </a>
+                    <a href="/coinflip" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M256 64C114.6 64 0 128.6 0 208v96c0 79.4 114.6 144 256 144s256-64.6 256-144v-96c0-79.4-114.6-144-256-144zm0 240c-97 0-176-35.8-176-80s79-80 176-80 176 35.8 176 80-79 80-176 80z"/></svg></span>
+                        <span class="nav-label">Coinflip</span>
+                    </a>
+                    <a href="/blackjack" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M128 32C92.7 32 64 60.7 64 96v320c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H128zm48 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm160-192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zM256 256c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></svg></span>
+                        <span class="nav-label">Blackjack</span>
+                    </a>
+                    <a href="/slots" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h112V32H64zm176 0v448h112c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H240zm176 0v448h32c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64h-32z"/></svg></span>
+                        <span class="nav-label">Slots</span>
+                    </a>
+                    <a href="/dice" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 640 512" height="1em" width="1em"><path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24zm0-96c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24zm48 96c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24zm0-96c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24zM268.29 112H48c-26.51 0-48 21.49-48 48v224c0 26.51 21.49 48 48 48h220.29c13.77 0 26.96-5.68 36.42-15.69l104-104c19.53-19.53 19.53-51.21 0-70.71l-104-114.29C294.95 116.89 281.76 112 268.29 112zM112 264c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24zm0-96c-13.25 0-24-10.75-24-24s10.75-24 24-24 24 10.75 24 24-10.75 24-24 24z"/></svg></span>
+                        <span class="nav-label">Dice</span>
+                    </a>
+                    <a href="/jackpot" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 576 512" height="1em" width="1em"><path d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"/></svg></span>
+                        <span class="nav-label">Jackpot</span>
+                    </a>
+                    <a href="/wheel" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM57.6 256c0 28.2 6.2 54.8 17.1 78.6l-30 30c-6.2 6.2-6.2 16.4 0 22.6l22.6 22.6c6.2 6.2 16.4 6.2 22.6 0l30-30c23.8 10.9 50.4 17.1 78.6 17.1 28.2 0 54.8-6.2 78.6-17.1l30 30c6.2 6.2 16.4 6.2 22.6 0l22.6-22.6c6.2-6.2 6.2-16.4 0-22.6l-30-30c10.9-23.8 17.1-50.4 17.1-78.6s-6.2-54.8-17.1-78.6l30-30c6.2-6.2 6.2-16.4 0-22.6l-22.6-22.6c-6.2-6.2-16.4-6.2-22.6 0l-30 30C311.2 70.2 284.6 64 256.4 64s-54.8 6.2-78.6 17.1l-30-30c-6.2-6.2-16.4-6.2-22.6 0L124.3 83.3c-6.2 6.2-6.2 16.4 0 22.6l30 30C143.4 201.2 137.6 227.8 137.6 256z"/></svg></span>
+                        <span class="nav-label">Wheel</span>
+                    </a>
+                    <a href="/keno" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm32 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm128-192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm128-192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm128-192c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm0 96c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32z"/></svg></span>
+                        <span class="nav-label">Keno</span>
+                    </a>
+                    <a href="/towers" class="nav-item ">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em"><path d="M256 0L64 96v128l192 96 192-96V96L256 0zm0 48l144 72v80L256 272 112 200v-80l144-72zM64 288v128l192 96 192-96V288l-192 96-192-96z"/></svg></span>
+                        <span class="nav-label">Towers</span>
+                    </a>
+                </div>
+                <div class="sidebar-section">
+                    <div class="section-title">Community</div>
+                    <a href="https://discord.gg/Zw8phV4b32" target="_blank" rel="noopener noreferrer" class="nav-item">
+                        <span class="nav-icon"><svg fill="currentColor" viewBox="0 0 640 512" height="1em" width="1em"><path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg></span>
+                        <span class="nav-label">Join Discord</span>
+                    </a>
+                </div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="section-title">Account</div>
+                    
+                    <a href="/dashboard" class="nav-item ">
+                        <span class="nav-icon"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M32 32v448h448V32zm400 400H80V80h352z"></path><path d="M160 368h48V208h-48zm96 0h48V128h-48zm96 0h48V272h-48z"></path></svg></span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                    <a href="/account" class="nav-item ">
+                        <span class="nav-icon"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg></span>
+                        <span class="nav-label">My Account</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </aside>
+
+        <main class="game-container sidebar-expanded" id="game-container">
+            
+<div class="home-container">
+    <div class="hero-section">
+        <div class="hero-banner" style="background-image: url('img/banner2.png'); background-size: cover; background-color: #1a2332;">
+            <div class="hero-content">
+                <h1>Welcome to DonutBet</h1>
+                <p>The best SMP casino experience.</p>
+                
+                <a href="/account" class="hero-btn">Account</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="game-category">
+        <div class="category-header"><h2>DonutBet Originals</h2></div>
+        <div class="games-grid">
+            <a href="/mines" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/mines.png'); background-size: cover; background-color: #1a2f24;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Mines</span></div>
+            </a>
+            <a href="/coinflip" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/coinflip.png'); background-size: cover; background-color: #2f251a;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Coinflip</span></div>
+            </a>
+            <a href="/slots" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/slots.png'); background-size: cover; background-color: #2a2038;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Slots</span></div>
+            </a>
+            <a href="/jackpot" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/jackpot.png'); background-size: cover; background-color: #2a3820;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Jackpot</span></div>
+            </a>
+            <a href="/wheel" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/wheel.png'); background-size: cover; background-color: #1a2a3a;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Wheel</span></div>
+            </a>
+            <a href="/blackjack" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/blackjack.png'); background-size: cover; background-color: #1a3828;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Blackjack</span></div>
+            </a>
+            <a href="/dice" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/dice.png'); background-size: cover; background-color: #2a1a38;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Dice</span></div>
+            </a>
+            <a href="/keno" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/keno.png'); background-size: cover; background-color: #382a1a;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Keno</span></div>
+            </a>
+            <a href="/towers" class="game-card game-card-link">
+                <div class="game-image" style="background-image: url('img/towers.png'); background-size: cover; background-color: #1a2838;"><div class="game-overlay"><div class="play-icon">▶</div></div></div>
+                <div class="game-info"><span class="game-title">Towers</span></div>
+            </a>
+        </div>
+    </div>
+
+    <div id="leaderboard-section">
+        <div class="leaderboard-container">
+            <div class="leaderboard-header">
+                <div class="header-title">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="trophy-icon" height="1em" width="1em"><path d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"></path></svg>
+                    <h1>Leaderboard</h1>
+                </div>
+                <div class="timeframe-selector" id="timeframe-selector">
+                    <button type="button" class="active" data-timeframe="daily">Daily</button>
+                    <button type="button" data-timeframe="weekly">Weekly</button>
+                    <button type="button" data-timeframe="monthly">Monthly</button>
+                </div>
+            </div>
+            <div class="leaderboard-table-container">
+                <table class="leaderboard-table">
+                    <thead><tr><th>Player</th><th>Wagered</th></tr></thead>
+                    <tbody id="leaderboard-tbody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<script>
+(function() {
+    var tbody = document.getElementById('leaderboard-tbody');
+    var selector = document.getElementById('timeframe-selector');
+    var currentTimeframe = 'daily';
+
+    function formatMoney(val) {
+        if (typeof window.formatMoney === 'function') return window.formatMoney(val);
+        return Number(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderLeaderboard(data) {
+        var html = '';
+        var defaultAvatar = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>';
+
+        for (var i = 0; i < data.length; i++) {
+            var p = data[i];
+            var avatarHtml = p.avatar && p.username
+                ? '<img src="' + p.avatar + '" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\';">' + '<div style="display:none;">' + defaultAvatar + '</div>'
+                : defaultAvatar;
+            var username = p.username || '—';
+            var wagered = p.wagered || 0;
+
+            html += '<tr>' +
+                '<td class="player-cell"><div class="player-info">' +
+                '<div class="player-avatar">' + avatarHtml + '<div class="rank-indicator rank-' + p.rank + '">' + p.rank + '</div></div>' +
+                '<span>' + username + '</span>' +
+                '</div></td>' +
+                '<td class="wager-cell">$' + formatMoney(wagered) + '</td>' +
+                '</tr>';
+        }
+
+        tbody.innerHTML = html;
+    }
+
+    function fetchLeaderboard(timeframe) {
+        fetch('/api/leaderboard?timeframe=' + timeframe)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.leaderboard) {
+                    renderLeaderboard(data.leaderboard);
+                }
+            })
+            .catch(function(err) {
+                console.error('Failed to load leaderboard:', err);
+            });
+    }
+
+    // Handle timeframe button clicks
+    if (selector) {
+        selector.addEventListener('click', function(e) {
+            var btn = e.target.closest('button');
+            if (!btn || !btn.dataset.timeframe) return;
+
+            selector.querySelectorAll('button').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            currentTimeframe = btn.dataset.timeframe;
+            fetchLeaderboard(currentTimeframe);
+        });
+    }
+
+    // Initial load
+    fetchLeaderboard(currentTimeframe);
+})();
+</script>
+
+    <div class="legal-footer">
+        <div class="copyright">© 2026 DonutBet. All rights reserved.</div>
+    </div>
+</div>
+
+
+        </main>
+
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+
+        <div class="chat-panel" id="chat-panel">
+            <div class="chat-header">
+                <h3><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em"><path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg> Chat</h3>
+                <div class="chat-header-info">
+                    <div class="online-count"><div class="online-dot"></div><span id="chat-online-count">0 Online</span></div>
+                </div>
+                <button type="button" class="toggle-chat-btn" id="toggle-chat-btn" aria-label="Toggle chat"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+            </div>
+            <div class="chat-content">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be loaded here -->
+                </div>
+                <div class="chat-input-area" id="chat-input-area">
+                    
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="chat-input" class="chat-input" placeholder="Type a message..." maxlength="300" autocomplete="off">
+                        <button type="button" id="chat-send-btn" class="chat-send-btn">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <button type="button" class="chat-open-tab" id="chat-open-tab" style="display: none;" aria-label="Open chat">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1.2em" width="1.2em"><path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
+        </button>
+    </div>
+</div>
+
+<div id="donut-toast-container" class="donut-toast-container" aria-live="polite"></div>
+
+<!-- User Profile Popup (for tipping) -->
+<div id="user-profile-popup" class="user-profile-popup" aria-hidden="true">
+    <div class="user-profile-popup-backdrop" id="user-profile-popup-backdrop"></div>
+    <div class="user-profile-popup-content">
+        <button type="button" class="user-profile-popup-close" id="user-profile-popup-close" aria-label="Close">&times;</button>
+        <div class="user-profile-popup-header">
+            <img id="profile-popup-avatar" src="img/items/default-avatar.png" alt="" class="profile-popup-avatar">
+            <div class="profile-popup-info">
+                <h3 id="profile-popup-username" class="profile-popup-username">Username</h3>
+                <span id="profile-popup-joined" class="profile-popup-joined">Member since Jan 2024</span>
+            </div>
+        </div>
+        <div class="user-profile-popup-body">
+            <div class="tip-section">
+                <label for="tip-amount-input" class="tip-label">Tip Amount</label>
+                <div class="tip-input-wrapper">
+                    <span class="tip-currency">$</span>
+                    <input type="text" id="tip-amount-input" class="tip-amount-input" placeholder="Enter amount" autocomplete="off">
+                </div>
+                <div class="tip-fee-info">5% fee will be deducted from the tip</div>
+                <button type="button" id="send-tip-btn" class="send-tip-btn">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
+                    Send Tip
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="profile-popup-user-id" value="">
+
+
+<div id="wallet-popup" class="wallet-popup" aria-hidden="true">
+    <div class="wallet-popup-backdrop" id="wallet-popup-backdrop"></div>
+    <div class="wallet-popup-content">
+        <div class="wallet-popup-header">
+            <div class="wallet-popup-title-row">
+                <h2 class="wallet-popup-title">Wallet</h2>
+                
+            </div>
+            <button type="button" class="wallet-popup-close" id="wallet-popup-close" aria-label="Close">&times;</button>
+        </div>
+        
+        <div class="wallet-popup-body wallet-pending-approval">
+            <div class="wallet-pending-icon">⏳</div>
+            <h3 class="wallet-pending-title">Approval required</h3>
+            <p class="wallet-pending-text">Your account is pending approval. You’ll be able to deposit and withdraw once an admin approves you.</p>
+            <a href="/pending_approval" class="wallet-pending-link">View status</a>
+        </div>
+        
+    </div>
+</div>
+
+<div id="set-minecraft-popup" class="set-minecraft-popup " style="display: none;" aria-hidden="true">
+    <div class="set-minecraft-backdrop" id="set-minecraft-backdrop"></div>
+    <div class="set-minecraft-content">
+        <div class="set-minecraft-header">
+            <h2 class="set-minecraft-title">🎮 Set Minecraft Username</h2>
+            
+            <button type="button" class="set-minecraft-close" id="set-minecraft-close" aria-label="Close">&times;</button>
+            
+        </div>
+        <div class="set-minecraft-body">
+            <form method="POST" action="/set_minecraft" id="set-minecraft-form">
+                <p class="set-minecraft-desc">Required for deposits and withdrawals. Bedrock: add a dot in front (e.g. <code>.YourName</code>).</p>
+                <div class="set-minecraft-row">
+                    <label for="minecraft_username">Username</label>
+                    <input type="text" id="minecraft_username" name="minecraft_username" value="cpufreq" maxlength="32" required placeholder="Your Minecraft username" class="wallet-input set-minecraft-input">
+                </div>
+                <label class="set-minecraft-checkbox">
+                    <input type="checkbox" name="minecraft_agreed" required>
+                    <span>I confirm this is my correct Minecraft username.</span>
+                </label>
+                
+                <div class="set-minecraft-actions">
+                    <button type="submit" class="wallet-submit-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+        
+
+<style>
+.wallet-container { display: inline-flex; align-items: center; background: var(--background-card); border: 1px solid rgb(47, 69, 83); border-radius: var(--border-radius); overflow: hidden; }
+.wallet-balance { display: inline-flex; align-items: center; padding: 8px 12px; color: var(--text-primary); font-weight: 600; font-size: 0.95rem; }
+.wallet-balance .currency-symbol { color: var(--accent-green); margin-right: 2px; }
+.wallet-btn { padding: 8px 14px; background: var(--background-card-hover); border: none; border-left: 1px solid rgb(47, 69, 83); color: var(--text-primary); cursor: pointer; font-size: 0.9rem; font-weight: 500; }
+.wallet-btn:hover { background: var(--accent-green); color: #0f212e; }
+
+.wallet-popup { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.wallet-popup.open { opacity: 1; visibility: visible; }
+.wallet-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
+.wallet-popup.open .wallet-popup-backdrop { opacity: 1; }
+.wallet-popup-content { position: relative; background: linear-gradient(165deg, #1a2c38 0%, #0f1e28 100%); border: 1px solid rgba(0, 231, 1, 0.25); border-radius: 20px; max-width: 520px; width: 100%; max-height: 90vh; overflow: hidden; box-shadow: 0 32px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05), 0 0 60px rgba(0, 231, 1, 0.08); transform: scale(0.85) translateY(30px); opacity: 0; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease; }
+.wallet-popup.open .wallet-popup-content { transform: scale(1) translateY(0); opacity: 1; }
+.wallet-popup.closing .wallet-popup-content { transform: scale(0.9) translateY(20px); opacity: 0; transition: transform 0.25s cubic-bezier(0.4, 0, 1, 1), opacity 0.25s ease; }
+.wallet-popup.closing .wallet-popup-backdrop { opacity: 0; transition: opacity 0.25s ease; }
+.wallet-popup-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border-bottom: 1px solid rgba(47, 69, 83, 0.8); background: rgba(0,0,0,0.25); }
+.wallet-popup-title-row { display: flex; align-items: center; gap: 14px; }
+.wallet-popup-title { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.02em; }
+.wallet-popup-balance { font-size: 1.35rem; font-weight: 700; color: var(--accent-green); padding: 8px 14px; background: rgba(0, 231, 1, 0.12); border-radius: 10px; border: 1px solid rgba(0, 231, 1, 0.2); }
+.wallet-popup-balance .currency-symbol { color: var(--accent-green); }
+.wallet-popup-close { background: rgba(255,255,255,0.05); border: none; color: var(--text-secondary); font-size: 1.75rem; cursor: pointer; padding: 4px 10px; line-height: 1; transition: all 0.2s; border-radius: 8px; }
+.wallet-popup-close:hover { color: var(--text-primary); background: rgba(255,77,77,0.15); }
+
+.wallet-popup-tabs { display: flex; border-bottom: 1px solid rgba(47, 69, 83, 0.8); background: rgba(0,0,0,0.15); }
+.wallet-tab { flex: 1; padding: 16px 20px; border: none; background: none; color: var(--text-secondary); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.wallet-tab:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+.wallet-tab.active { color: var(--accent-green); background: rgba(0, 231, 1, 0.08); border-bottom: 3px solid var(--accent-green); margin-bottom: -1px; }
+.wallet-popup-body { padding: 28px; overflow-y: auto; max-height: calc(90vh - 180px); }
+.wallet-tab-panel { display: none; }
+.wallet-tab-panel.active { display: block; animation: walletFadeIn 0.25s ease; }
+@keyframes walletFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.wallet-panel-icon { font-size: 2.5rem; margin-bottom: 14px; opacity: 0.9; }
+.wallet-panel-desc { margin: 0 0 18px 0; color: var(--text-secondary); font-size: 1rem; line-height: 1.5; }
+.wallet-steps { margin: 0 0 18px 0; padding-left: 22px; color: var(--text-primary); font-size: 0.95rem; line-height: 1.8; }
+.wallet-steps li { margin-bottom: 10px; }
+.wallet-steps code { background: rgba(0,0,0,0.35); padding: 5px 10px; border-radius: 6px; font-size: 0.9em; color: var(--accent-green); border: 1px solid rgba(0, 231, 1, 0.15); }
+.wallet-copy-btn { margin-left: 8px; padding: 4px 10px; font-size: 0.8rem; background: var(--accent-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; transition: background 0.2s; }
+.wallet-copy-btn:hover { background: var(--accent-blue-hover); }
+.wallet-copy-btn.copied { background: var(--accent-green); color: #0f212e; }
+.wallet-warning { margin: 16px 0 0; padding: 12px; background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.25); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
+.wallet-skelly-btn { display: block; margin-top: 20px; padding: 16px 20px; text-align: center; background: linear-gradient(135deg, rgba(0, 231, 1, 0.15) 0%, rgba(0, 180, 1, 0.1) 100%); border: 1px solid rgba(0, 231, 1, 0.4); border-radius: 12px; color: var(--accent-green); font-size: 1.05rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 231, 1, 0.1); }
+.wallet-skelly-btn:hover { background: linear-gradient(135deg, rgba(0, 231, 1, 0.25) 0%, rgba(0, 180, 1, 0.15) 100%); border-color: var(--accent-green); color: var(--accent-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 231, 1, 0.2); }
+.wallet-skelly-info { margin: 14px 0 0; padding: 14px 16px; font-size: 1rem; color: var(--text-secondary); background: rgba(0, 0, 0, 0.25); border-radius: 10px; border: 1px solid rgba(47, 69, 83, 0.6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.wallet-skelly-info strong { color: var(--accent-green); font-size: 1.1rem; font-weight: 700; }
+
+.wallet-withdraw-form { margin-top: 8px; }
+.wallet-withdraw-row { margin-bottom: 14px; }
+.wallet-withdraw-row label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); }
+.wallet-withdraw-input-wrap { display: flex; gap: 8px; align-items: center; }
+.wallet-input { flex: 1; padding: 12px 14px; background: rgba(0,0,0,0.35); border: 1px solid rgb(47, 69, 83); border-radius: 8px; color: var(--text-primary); font-size: 1rem; }
+.wallet-input:focus { outline: none; border-color: var(--accent-green); box-shadow: 0 0 0 2px rgba(0, 231, 1, 0.2); }
+.wallet-all-btn { padding: 12px 16px; background: rgba(0, 231, 1, 0.15); border: 1px solid rgba(0, 231, 1, 0.4); color: var(--accent-green); border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.2s, border-color 0.2s; }
+.wallet-all-btn:hover { background: rgba(0, 231, 1, 0.25); border-color: var(--accent-green); }
+.wallet-msg { margin: 0 0 12px 0; font-size: 0.9rem; }
+.wallet-error { color: var(--danger); }
+.wallet-success { color: var(--accent-green); }
+.wallet-withdraw-actions { margin-top: 18px; }
+.wallet-submit-btn { width: 100%; padding: 14px; background: linear-gradient(180deg, var(--accent-green) 0%, #00b801 100%); border: none; border-radius: 8px; color: #0f212e; font-size: 1rem; font-weight: 700; cursor: pointer; transition: filter 0.2s, transform 0.05s; }
+.wallet-submit-btn:hover { filter: brightness(1.1); }
+.wallet-submit-btn:active { transform: scale(0.98); }
+
+.wallet-pending-approval { text-align: center; padding: 32px 24px !important; }
+.wallet-pending-icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.9; }
+.wallet-pending-title { margin: 0 0 12px 0; font-size: 1.2rem; color: var(--text-primary); font-weight: 700; }
+.wallet-pending-text { margin: 0 0 20px 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; }
+.wallet-pending-link { display: inline-block; padding: 10px 20px; background: rgba(255, 193, 7, 0.15); border: 1px solid rgba(255, 193, 7, 0.4); color: #f0c040; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, border-color 0.2s; }
+.wallet-pending-link:hover { background: rgba(255, 193, 7, 0.25); border-color: #f0c040; }
+
+.set-minecraft-popup { position: fixed; inset: 0; z-index: 10001; align-items: center; justify-content: center; padding: 16px; }
+.set-minecraft-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); }
+.set-minecraft-popup.set-minecraft-required .set-minecraft-backdrop { pointer-events: auto; }
+.set-minecraft-content { position: relative; background: linear-gradient(165deg, #1e3644 0%, #162a36 100%); border: 1px solid rgba(0, 231, 1, 0.25); border-radius: 16px; max-width: 420px; width: 100%; box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
+.set-minecraft-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid rgba(47, 69, 83, 0.8); background: rgba(0,0,0,0.2); }
+.set-minecraft-title { margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+.set-minecraft-close { background: none; border: none; color: var(--text-secondary); font-size: 1.75rem; cursor: pointer; padding: 0 4px; line-height: 1; }
+.set-minecraft-close:hover { color: var(--text-primary); }
+.set-minecraft-body { padding: 24px; }
+.set-minecraft-desc { margin: 0 0 16px 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.45; }
+.set-minecraft-desc code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: var(--accent-green); }
+.set-minecraft-row { margin-bottom: 16px; }
+.set-minecraft-row label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); }
+.set-minecraft-input { width: 100%; box-sizing: border-box; }
+.set-minecraft-checkbox { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; cursor: pointer; font-size: 0.9rem; color: var(--text-secondary); }
+.set-minecraft-checkbox input { margin-top: 3px; }
+.set-minecraft-flash { margin-bottom: 12px; }
+.set-minecraft-flash-success { color: var(--accent-green); }
+.set-minecraft-flash-error { color: var(--danger); }
+.set-minecraft-actions { margin-top: 8px; }
+
+/* Chat Styles */
+.chat-panel { position: fixed; right: 0; top: 70px; bottom: 0; width: 0; background: var(--background-sidebar); border-left: 1px solid rgb(47, 69, 83); display: flex; flex-direction: column; z-index: 1000; transition: width 0.3s ease; overflow: hidden; }
+.chat-panel.open { width: 320px; }
+.chat-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgb(47, 69, 83); min-height: 48px; }
+.chat-header h3 { margin: 0; font-size: 14px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+.chat-header-info { display: flex; align-items: center; gap: 12px; }
+.online-count { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.online-dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.toggle-chat-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 8px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, transform 0.3s; }
+.toggle-chat-btn:hover { color: var(--text-primary); }
+.chat-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.chat-messages::-webkit-scrollbar { width: 6px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+.chat-messages::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+.message { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px 12px; }
+.message-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.message-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+.message-user { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.message-time { font-size: 11px; color: var(--text-secondary); }
+.message-content { font-size: 13px; color: var(--text-secondary); line-height: 1.4; word-break: break-word; }
+.chat-empty { text-align: center; padding: 40px 20px; color: var(--text-secondary); font-size: 13px; }
+.chat-input-area { padding: 12px; border-top: 1px solid rgb(47, 69, 83); background: rgba(0,0,0,0.15); }
+.chat-input-wrapper { display: flex; gap: 8px; align-items: center; }
+.chat-input { flex: 1; padding: 10px 14px; background: rgba(0,0,0,0.3); border: 1px solid rgb(47, 69, 83); border-radius: 8px; color: var(--text-primary); font-size: 13px; outline: none; transition: border-color 0.2s; }
+.chat-input:focus { border-color: var(--accent-green); }
+.chat-input::placeholder { color: var(--text-secondary); }
+.chat-send-btn { padding: 10px 12px; background: var(--accent-green); border: none; border-radius: 8px; color: #0f212e; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: filter 0.2s; }
+.chat-send-btn:hover { filter: brightness(1.1); }
+.chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.chat-login-prompt { text-align: center; padding: 8px; }
+.chat-login-link { color: var(--accent-green); text-decoration: none; font-size: 13px; font-weight: 500; }
+.chat-login-link:hover { text-decoration: underline; }
+.chat-open-tab { position: fixed; right: 0; top: 50%; transform: translateY(-50%); background: var(--background-card); border: 1px solid rgb(47, 69, 83); border-right: none; border-radius: 8px 0 0 8px; padding: 16px 12px; cursor: pointer; z-index: 1100; color: var(--text-secondary); transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; }
+.chat-open-tab:hover { background: var(--background-card-hover); color: var(--text-primary); }
+.game-container.chat-open { margin-right: 320px; }
+@media (max-width: 1024px) { .chat-panel.open { width: 280px; } .game-container.chat-open { margin-right: 280px; } }
+@media (max-width: 768px) { .chat-panel { display: none; } .chat-open-tab { display: none !important; } .game-container.chat-open { margin-right: 0; } }
+/* Hide chat when mobile menu is open */
+.sidebar.mobile-open ~ .game-container + .mobile-overlay + .chat-panel,
+.sidebar.mobile-open ~ .game-container + .mobile-overlay + .chat-panel + .chat-open-tab { opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+body.menu-open .chat-panel, body.menu-open .chat-open-tab { opacity: 0 !important; pointer-events: none !important; transition: opacity 0.2s ease; }
+
+/* Chat Role Badges and Colors */
+.role-badge { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.role-admin { background: rgba(255, 75, 75, 0.2); color: #ff4b4b; border: 1px solid rgba(255, 75, 75, 0.3); }
+.role-staff { background: rgba(75, 255, 75, 0.2); color: #4bff4b; border: 1px solid rgba(75, 255, 75, 0.3); }
+.role-admin-name { color: #ff4b4b !important; }
+.role-staff-name { color: #4bff4b !important; }
+
+/* Chat Delete Button */
+.chat-delete-btn { background: transparent; border: none; color: rgba(255, 75, 75, 0.5); cursor: pointer; font-size: 16px; font-weight: bold; padding: 2px 6px; line-height: 1; border-radius: 4px; transition: all 0.2s; opacity: 0; }
+.message:hover .chat-delete-btn { opacity: 1; }
+.chat-delete-btn:hover { background: rgba(255, 75, 75, 0.2); color: #ff4b4b; }
+
+/* System Message */
+.system-message { background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); }
+
+/* User Profile Popup Styles */
+.user-profile-popup { position: fixed; inset: 0; z-index: 10002; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0.25s ease; }
+.user-profile-popup.open { opacity: 1; visibility: visible; }
+.user-profile-popup-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.25s ease; }
+.user-profile-popup.open .user-profile-popup-backdrop { opacity: 1; }
+.user-profile-popup-content { position: relative; background: linear-gradient(165deg, #1e3644 0%, #162a36 100%); border: 1px solid rgba(0, 231, 1, 0.2); border-radius: 16px; max-width: 340px; width: 100%; box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); transform: scale(0.8) translateY(30px); opacity: 0; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease; }
+.user-profile-popup.open .user-profile-popup-content { transform: scale(1) translateY(0); opacity: 1; }
+.user-profile-popup.closing .user-profile-popup-content { transform: scale(0.9) translateY(15px); opacity: 0; transition: transform 0.2s ease, opacity 0.2s ease; }
+.user-profile-popup.closing .user-profile-popup-backdrop { opacity: 0; transition: opacity 0.2s ease; }
+.user-profile-popup-close { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.1); border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; padding: 4px 10px; line-height: 1; border-radius: 8px; transition: all 0.2s; z-index: 1; }
+.user-profile-popup-close:hover { background: rgba(255,75,75,0.2); color: #ff4b4b; }
+.user-profile-popup-header { display: flex; align-items: center; gap: 16px; padding: 24px 24px 20px; border-bottom: 1px solid rgba(47, 69, 83, 0.8); }
+.profile-popup-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-green); box-shadow: 0 0 20px rgba(0, 231, 1, 0.3); animation: avatarGlow 2s ease-in-out infinite alternate; }
+@keyframes avatarGlow { from { box-shadow: 0 0 15px rgba(0, 231, 1, 0.2); } to { box-shadow: 0 0 25px rgba(0, 231, 1, 0.4); } }
+.profile-popup-info { flex: 1; }
+.profile-popup-username { margin: 0 0 4px 0; font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+.profile-popup-joined { font-size: 0.8rem; color: var(--text-secondary); }
+.user-profile-popup-body { padding: 20px 24px 24px; }
+.tip-section { display: flex; flex-direction: column; gap: 12px; }
+.tip-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+.tip-input-wrapper { display: flex; align-items: center; background: rgba(0,0,0,0.35); border: 1px solid rgb(47, 69, 83); border-radius: 10px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+.tip-input-wrapper:focus-within { border-color: var(--accent-green); box-shadow: 0 0 0 3px rgba(0, 231, 1, 0.15); }
+.tip-currency { padding: 12px 0 12px 14px; color: var(--accent-green); font-weight: 700; font-size: 1.1rem; }
+.tip-amount-input { flex: 1; padding: 12px 14px 12px 8px; background: transparent; border: none; color: var(--text-primary); font-size: 1rem; outline: none; }
+.tip-amount-input::placeholder { color: var(--text-secondary); opacity: 0.7; }
+.tip-fee-info { font-size: 0.8rem; color: var(--text-secondary); text-align: center; padding: 4px 0; }
+.send-tip-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; background: linear-gradient(180deg, var(--accent-green) 0%, #00b801 100%); border: none; border-radius: 10px; color: #0f212e; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0, 231, 1, 0.3); }
+.send-tip-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 231, 1, 0.4); }
+.send-tip-btn:active { transform: translateY(0) scale(0.98); }
+.send-tip-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.send-tip-btn svg { font-size: 1.1em; }
+
+/* Clickable username in chat */
+.message-user.clickable { cursor: pointer; transition: color 0.2s; }
+.message-user.clickable:hover { color: var(--accent-green); text-decoration: underline; }
+
+/* Clickable avatar in chat */
+.message-avatar.clickable-avatar { transition: transform 0.2s, box-shadow 0.2s; }
+.message-avatar.clickable-avatar:hover { transform: scale(1.15); box-shadow: 0 0 12px rgba(0, 231, 1, 0.5); }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('wallet-btn');
+    var popup = document.getElementById('wallet-popup');
+    var closeBtn = document.getElementById('wallet-popup-close');
+    var backdrop = document.getElementById('wallet-popup-backdrop');
+    if (btn && popup) {
+        function openWallet() {
+            popup.classList.remove('closing');
+            popup.classList.add('open');
+            popup.setAttribute('aria-hidden', 'false');
+        }
+        function closeWallet() {
+            popup.classList.add('closing');
+            popup.classList.remove('open');
+            popup.setAttribute('aria-hidden', 'true');
+            setTimeout(function() {
+                popup.classList.remove('closing');
+            }, 250);
+        }
+        btn.addEventListener('click', openWallet);
+        if (closeBtn) closeBtn.addEventListener('click', closeWallet);
+        if (backdrop) backdrop.addEventListener('click', closeWallet);
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popup.classList.contains('open')) {
+                closeWallet();
+            }
+        });
+    }
+    // Wallet tabs
+    document.querySelectorAll('.wallet-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var t = this.getAttribute('data-tab');
+            document.querySelectorAll('.wallet-tab').forEach(function(x) { x.classList.remove('active'); });
+            document.querySelectorAll('.wallet-tab-panel').forEach(function(x) { x.classList.remove('active'); });
+            this.classList.add('active');
+            var panel = document.getElementById('wallet-panel-' + t);
+            if (panel) panel.classList.add('active');
+        });
+    });
+    // Wallet withdraw form
+    var form = document.getElementById('wallet-withdraw-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var amount = (window.parseMoney || parseFloat)(document.getElementById('wallet-withdraw-amount').value);
+            var errorEl = document.getElementById('wallet-withdraw-error');
+            var successEl = document.getElementById('wallet-withdraw-success');
+            errorEl.textContent = '';
+            successEl.style.display = 'none';
+            if (isNaN(amount) || amount <= 0) {
+                var msg = 'Enter a valid amount (e.g. 1k, 5m).';
+                errorEl.textContent = msg;
+                if (window.showNotification) window.showNotification(msg, true);
+                return;
+            }
+            fetch('/api/withdraw', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: amount })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    errorEl.textContent = data.error;
+                    if (window.showNotification) window.showNotification(data.error, true);
+                } else {
+                    var msg = data.large_withdrawal ? data.message : 'Withdrawal requested.';
+                    successEl.textContent = msg;
+                    successEl.style.display = 'block';
+                    if (window.showNotification) window.showNotification(msg, false);
+                    setTimeout(function() { location.reload(); }, 1500);
+                }
+            })
+            .catch(function() {
+                var msg = 'Something went wrong.';
+                errorEl.textContent = msg;
+                if (window.showNotification) window.showNotification(msg, true);
+            });
+        });
+    }
+})();
+(function() {
+    var popup = document.getElementById('set-minecraft-popup');
+    var closeBtn = document.getElementById('set-minecraft-close');
+    var backdrop = document.getElementById('set-minecraft-backdrop');
+    if (popup) {
+        if (!popup.classList.contains('set-minecraft-required')) {
+            if (closeBtn) closeBtn.addEventListener('click', function() { popup.style.display = 'none'; popup.setAttribute('aria-hidden', 'true'); });
+            if (backdrop) backdrop.addEventListener('click', function() { popup.style.display = 'none'; popup.setAttribute('aria-hidden', 'true'); });
+        }
+        var params = new URLSearchParams(location.search);
+        if (params.get('edit_minecraft') === '1') {
+            popup.style.display = 'flex';
+            popup.setAttribute('aria-hidden', 'false');
+        }
+    }
+})();
+
+// Mobile menu toggle
+(function() {
+    var menuBtn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.querySelector('.sidebar');
+    var overlay = document.getElementById('mobile-overlay');
+
+    function openMenu() {
+        if (sidebar) sidebar.classList.add('mobile-open');
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+        if (sidebar) sidebar.classList.remove('mobile-open');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function() {
+            if (sidebar && sidebar.classList.contains('mobile-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking a nav link
+    document.querySelectorAll('.sidebar .nav-item').forEach(function(link) {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                closeMenu();
+            }
+        });
+    });
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
+})();
+
+// User Profile Popup for Tipping
+(function() {
+    var popup = document.getElementById('user-profile-popup');
+    var closeBtn = document.getElementById('user-profile-popup-close');
+    var backdrop = document.getElementById('user-profile-popup-backdrop');
+    var sendTipBtn = document.getElementById('send-tip-btn');
+    var tipAmountInput = document.getElementById('tip-amount-input');
+    var userIdInput = document.getElementById('profile-popup-user-id');
+
+    if (!popup) return;
+
+    function openProfilePopup(userId) {
+        // Fetch user profile
+        fetch('/api/user/' + userId + '/profile')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success && data.user) {
+                    document.getElementById('profile-popup-avatar').src = data.user.avatar || 'img/items/default-avatar.png';
+                    document.getElementById('profile-popup-username').textContent = data.user.username;
+                    document.getElementById('profile-popup-joined').textContent = 'Member since ' + (data.user.created_at || 'Unknown');
+                    userIdInput.value = data.user.id;
+                    tipAmountInput.value = '';
+
+                    popup.classList.remove('closing');
+                    popup.classList.add('open');
+                    popup.setAttribute('aria-hidden', 'false');
+                    tipAmountInput.focus();
+                }
+            })
+            .catch(function(err) {
+                console.error('Failed to load profile:', err);
+                if (window.showNotification) window.showNotification('Failed to load user profile', true);
+            });
+    }
+
+    function closeProfilePopup() {
+        popup.classList.add('closing');
+        popup.classList.remove('open');
+        popup.setAttribute('aria-hidden', 'true');
+        setTimeout(function() {
+            popup.classList.remove('closing');
+        }, 250);
+    }
+
+    // Expose globally so chat.js can call it
+    window.openProfilePopup = openProfilePopup;
+
+    if (closeBtn) closeBtn.addEventListener('click', closeProfilePopup);
+    if (backdrop) backdrop.addEventListener('click', closeProfilePopup);
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('open')) {
+            closeProfilePopup();
+        }
+    });
+
+    // Send tip
+    if (sendTipBtn) {
+        sendTipBtn.addEventListener('click', function() {
+            var receiverId = userIdInput.value;
+            var amountStr = tipAmountInput.value;
+            var amount = (window.parseMoney || parseFloat)(amountStr);
+
+            if (!receiverId) {
+                if (window.showNotification) window.showNotification('No user selected', true);
+                return;
+            }
+
+            if (isNaN(amount) || amount <= 0) {
+                if (window.showNotification) window.showNotification('Enter a valid amount', true);
+                return;
+            }
+
+            sendTipBtn.disabled = true;
+            sendTipBtn.innerHTML = '<span style="animation: pulse 1s infinite;">Sending...</span>';
+
+            fetch('/api/tip', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ receiver_id: parseInt(receiverId), amount: amount })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    if (window.showNotification) window.showNotification(data.error, true);
+                } else {
+                    var msg = 'Sent $' + (window.formatMoney ? window.formatMoney(data.net_amount) : data.net_amount.toFixed(2)) + ' to ' + data.receiver + '!';
+                    if (window.showNotification) window.showNotification(msg, false);
+                    closeProfilePopup();
+                    // Refresh balance display
+                    if (window.pollBalance) window.pollBalance();
+                }
+            })
+            .catch(function(err) {
+                console.error('Tip failed:', err);
+                if (window.showNotification) window.showNotification('Failed to send tip', true);
+            })
+            .finally(function() {
+                sendTipBtn.disabled = false;
+                sendTipBtn.innerHTML = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg> Send Tip';
+            });
+        });
+    }
+
+    // Enter key to send tip
+    if (tipAmountInput) {
+        tipAmountInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendTipBtn.click();
+            }
+        });
+    }
+})();
+</script>
+    
+</body>
+</html>

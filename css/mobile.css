@@ -1,0 +1,456 @@
+/* ================================================
+   MOBILE RESPONSIVE STYLES
+   ================================================ */
+
+/* Mobile Navigation Toggle Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-btn svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+}
+
+/* ==================== TABLET BREAKPOINT (1024px) ==================== */
+@media (max-width: 1024px) {
+    .header .user-profile .username {
+        display: none;
+    }
+
+    .header .header-logout {
+        font-size: 0;
+        padding: 8px;
+    }
+
+    .header .header-logout::before {
+        content: "Exit";
+        font-size: 0.85rem;
+    }
+}
+
+/* ==================== MOBILE BREAKPOINT (768px) ==================== */
+@media (max-width: 768px) {
+    /* Show mobile menu button */
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Show overlay when sidebar is open */
+    .mobile-overlay.active {
+        display: block;
+    }
+
+    /* Header adjustments */
+    .header {
+        padding: 10px 12px !important;
+        height: auto !important;
+        min-height: 56px;
+    }
+
+    .header-left {
+        gap: 8px !important;
+    }
+
+    .header .logo h1 {
+        font-size: 1rem !important;
+    }
+
+    .header .logo .logo-icon {
+        height: 28px !important;
+    }
+
+    .header-right {
+        gap: 8px !important;
+    }
+
+    /* Wallet adjustments */
+    .wallet-container {
+        margin-right: 0 !important;
+    }
+
+    .wallet-balance {
+        padding: 6px 8px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .wallet-btn {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Hide logout text on mobile */
+    .header .header-logout {
+        display: none;
+    }
+
+    /* Sidebar - Off-canvas on mobile */
+    .sidebar {
+        position: fixed !important;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        width: 280px !important;
+        z-index: 1001;
+        transition: left 0.3s ease;
+        padding-top: 70px;
+        background: var(--background-sidebar) !important;
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+    /* Main container - full width on mobile */
+    .main-container {
+        display: block !important;
+    }
+
+    .game-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 12px !important;
+        min-height: calc(100vh - 56px);
+    }
+
+    .game-container.sidebar-expanded {
+        margin-left: 0 !important;
+    }
+
+    .game-container.chat-open {
+        margin-right: 0 !important;
+    }
+
+    /* Home container adjustments */
+    .home-container {
+        padding: 0 !important;
+    }
+
+    /* Game page layouts - stack vertically */
+    .mines-layout,
+    .slots-layout,
+    .wheel-layout,
+    .bj-layout {
+        flex-direction: column !important;
+    }
+
+    .mines-left,
+    .slots-left-panel,
+    .wheel-left-panel,
+    .bj-left {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .mines-right,
+    .slots-right-panel,
+    .wheel-right-panel,
+    .bj-right {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    /* Page padding adjustments */
+    .mines-page,
+    .slots-page,
+    .wheel-page,
+    .bj-page {
+        padding: 12px !important;
+    }
+}
+
+/* ==================== SMALL MOBILE (480px) ==================== */
+@media (max-width: 480px) {
+    /* Header tighter */
+    .header {
+        padding: 8px 10px !important;
+    }
+
+    .header .logo h1 {
+        display: none;
+    }
+
+    .header .logo .logo-icon {
+        height: 32px !important;
+    }
+
+    /* Wallet even more compact */
+    .wallet-balance {
+        padding: 5px 6px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .wallet-btn {
+        padding: 5px 8px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* User avatar only */
+    .header .user-profile {
+        padding: 4px !important;
+    }
+
+    /* Game layouts */
+    .mines-page,
+    .slots-page,
+    .wheel-page,
+    .bj-page {
+        padding: 8px !important;
+    }
+
+    /* Bet input wraps */
+    .mines-input,
+    .slots-input,
+    .wheel-input,
+    .bj-bet-input {
+        font-size: 0.95rem !important;
+    }
+
+    /* Button sizes */
+    .mines-btn,
+    .slots-btn,
+    .wheel-btn,
+    .bj-btn {
+        padding: 10px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Adjust row spacing */
+    .mines-layout,
+    .slots-layout,
+    .wheel-layout,
+    .bj-layout {
+        gap: 12px !important;
+    }
+
+    /* Mines grid */
+    .mines-grid {
+        padding: 10px !important;
+        gap: 6px !important;
+    }
+
+    .mines-cell {
+        min-width: 38px !important;
+        min-height: 38px !important;
+    }
+
+    /* Slots reels */
+    .slots-reels-container {
+        padding: 12px !important;
+    }
+
+    /* Wheel */
+    .wheel-outer-ring {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .wheel-center {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .wheel-center-text {
+        font-size: 0.65rem !important;
+    }
+
+    .wheel-multipliers {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .wheel-bets-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Blackjack cards */
+    .bj-card {
+        width: 55px !important;
+        height: 77px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Toast notifications */
+    .donut-toast-container {
+        bottom: 12px !important;
+        right: 12px !important;
+        left: 12px !important;
+        max-width: none !important;
+    }
+
+    .donut-toast {
+        padding: 10px 14px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        min-height: 48px !important;
+        padding: 6px 12px !important;
+    }
+
+    .game-container {
+        min-height: calc(100vh - 48px);
+    }
+
+    .sidebar {
+        padding-top: 54px;
+    }
+
+    /* Smaller wheel in landscape */
+    .wheel-outer-ring {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .wheel-container {
+        padding: 15px !important;
+    }
+}
+
+/* ==================== WALLET POPUP MOBILE ==================== */
+@media (max-width: 480px) {
+    .wallet-popup-content {
+        max-width: 100% !important;
+        margin: 8px;
+        border-radius: 12px !important;
+    }
+
+    .wallet-popup-header {
+        padding: 14px 16px !important;
+    }
+
+    .wallet-popup-title {
+        font-size: 1.1rem !important;
+    }
+
+    .wallet-popup-balance {
+        font-size: 1rem !important;
+        padding: 4px 8px !important;
+    }
+
+    .wallet-popup-body {
+        padding: 16px !important;
+    }
+
+    .wallet-tab {
+        padding: 10px 12px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .wallet-steps {
+        font-size: 0.85rem !important;
+    }
+
+    .set-minecraft-content {
+        margin: 8px;
+        max-width: calc(100% - 16px) !important;
+    }
+
+    .set-minecraft-body {
+        padding: 16px !important;
+    }
+}
+
+/* ==================== SIDEBAR NAV ITEMS MOBILE ==================== */
+@media (max-width: 768px) {
+    .sidebar-content {
+        padding: 12px !important;
+    }
+
+    .nav-item {
+        padding: 12px 14px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .section-title {
+        font-size: 0.7rem !important;
+        padding: 8px 14px !important;
+    }
+}
+
+/* ==================== TOUCH IMPROVEMENTS ==================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .mines-cell {
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+
+    .wheel-mult-btn {
+        min-height: 48px !important;
+    }
+
+    .bj-btn,
+    .mines-btn,
+    .slots-btn,
+    .wheel-btn {
+        min-height: 44px !important;
+    }
+
+    /* Remove hover effects that don't work well on touch */
+    .mines-cell:hover:not(.mines-cell-revealed),
+    .wheel-mult-btn:hover:not(:disabled),
+    .nav-item:hover {
+        transform: none !important;
+    }
+}
+
+/* ==================== SAFE AREA INSETS (notch phones) ==================== */
+@supports (padding: max(0px)) {
+    .header {
+        padding-left: max(12px, env(safe-area-inset-left)) !important;
+        padding-right: max(12px, env(safe-area-inset-right)) !important;
+    }
+
+    .game-container {
+        padding-left: max(12px, env(safe-area-inset-left)) !important;
+        padding-right: max(12px, env(safe-area-inset-right)) !important;
+        padding-bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    }
+
+    .sidebar.mobile-open {
+        padding-left: max(12px, env(safe-area-inset-left));
+    }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+@media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .mobile-overlay,
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

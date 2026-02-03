@@ -1,0 +1,342 @@
+/* Project overrides */
+.game-card-link { text-decoration: none; color: inherit; display: block; cursor: pointer; }
+.game-card-link:hover { color: inherit; }
+
+
+/* Global notifications (bottom right) */
+.donut-toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: min(380px, calc(100vw - 48px));
+    pointer-events: none;
+    transition: right 0.3s ease;
+}
+
+/* Shift notifications left when chat is open */
+body.chat-open .donut-toast-container {
+    right: 344px;
+}
+
+@media (max-width: 1024px) {
+    body.chat-open .donut-toast-container {
+        right: 304px;
+    }
+}
+
+@media (max-width: 768px) {
+    body.chat-open .donut-toast-container {
+        right: 24px;
+    }
+}
+.donut-toast {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+}
+.donut-toast--visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.donut-toast--success {
+    background: rgba(0, 231, 1, 0.12);
+    color: var(--accent-green);
+    border: 1px solid rgba(0, 231, 1, 0.35);
+}
+.donut-toast--error {
+    background: rgba(255, 77, 77, 0.12);
+    color: var(--danger);
+    border: 1px solid rgba(255, 77, 77, 0.35);
+}
+
+/* Header: logo, wallet, user profile */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--background-sidebar, #0f212e);
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+.header .logo:hover { color: inherit; }
+.header .logo .logo-icon { height: 36px; width: auto; display: block; }
+.header .logo h1 { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: 0.05em; }
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+@media (max-width: 768px) {
+    .header-center {
+        position: static;
+        transform: none;
+        flex: 1;
+        justify-content: center;
+    }
+}
+@media (max-width: 480px) {
+    .header-center .wallet-container {
+        font-size: 0.85rem;
+    }
+    .header-center .wallet-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .header-center .wallet-balance {
+        padding: 6px 8px;
+    }
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.header .wallet-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.header .wallet-balance {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.header .wallet-btn {
+    padding: 8px 14px;
+    background: var(--accent-blue);
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, filter 0.2s;
+}
+.header .wallet-btn:hover {
+    background: var(--accent-blue-hover);
+    filter: brightness(1.05);
+}
+
+.header .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.header .user-profile:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+.header .user-profile .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--background-card);
+}
+.header .user-profile .username {
+    font-weight: 500;
+    font-size: 0.9rem;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.header .header-logout {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+}
+.header .header-logout:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Header left alignment */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Balance update animation */
+#header-balance.balance-updated {
+    animation: balance-flash 0.6s ease;
+}
+
+@keyframes balance-flash {
+    0% { color: var(--text-primary); transform: scale(1); }
+    25% { color: var(--accent-green); transform: scale(1.15); }
+    50% { color: var(--accent-green); transform: scale(1.05); }
+    100% { color: var(--text-primary); transform: scale(1); }
+}
+
+/* ============================================
+   Global Coinflip Join Notification
+   ============================================ */
+.global-cf-notification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.global-cf-notification.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.global-cf-notification-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    padding-right: 40px;
+    background: linear-gradient(180deg, #1a2c38 0%, #0f1e28 100%);
+    border: 1px solid rgba(0, 231, 1, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 231, 1, 0.15);
+    max-width: 400px;
+}
+
+.global-cf-notification-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 231, 1, 0.15);
+    border-radius: 50%;
+    color: var(--accent-green);
+    flex-shrink: 0;
+    animation: global-cf-pulse 2s ease infinite;
+}
+
+@keyframes global-cf-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 231, 1, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(0, 231, 1, 0); }
+}
+
+.global-cf-notification-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.global-cf-notification-text strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.global-cf-notification-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.global-cf-notification-amount {
+    display: block;
+    color: var(--accent-green);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 4px;
+}
+
+.global-cf-notification-btn {
+    padding: 10px 18px;
+    background: linear-gradient(180deg, var(--accent-green) 0%, #00b801 100%);
+    border: none;
+    border-radius: 10px;
+    color: #0a1a10;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.global-cf-notification-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 231, 1, 0.4);
+}
+
+.global-cf-notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.global-cf-notification-close:hover {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff6b6b;
+}
+
+@media (max-width: 480px) {
+    .global-cf-notification {
+        top: auto;
+        bottom: 24px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .global-cf-notification-content {
+        max-width: none;
+        flex-wrap: wrap;
+    }
+
+    .global-cf-notification-btn {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
