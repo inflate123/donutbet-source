@@ -8,9 +8,9 @@
 
 ## 📌 Overview
 
-This repository documents the **client-side behavior, data structures, and observed game logic** of **DonutBet.cc**, a gambling platform that banned my account following an unusually large win streak.
+This repository documents the **client-side behavior, data structures, and observed game logic** of **DonutBet.cc**, a gambling platform that banned my account following an unusually large win amount.
 
-After the ban, I preserved and organized everything I had already collected while interacting with the site — including serialized responses, hashes, payload formats, and gameplay state behavior.
+After the ban, I preserved and organized everything I had already collected while interacting with the site, including serialized responses, hashes, payload formats, and gameplay state behavior.
 
 This project exists for **transparency, education, and technical analysis**.
 
